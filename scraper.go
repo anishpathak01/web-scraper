@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/gocolly/colly"
 )
@@ -34,6 +35,20 @@ func main() {
 		}
 
 		Books = append(Books, currentBook)
+	})
+
+	scraper.OnHTML(".next a", func(e *colly.HTMLElement) {
+		nextPage := e.Attr("href")
+		if nextPage != "" {
+			// Ensure the nextPage URL includes the "catalogue" route if it's missing
+			if !strings.HasPrefix(nextPage, "catalogue") {
+				nextPage = fmt.Sprintf("catalogue/%s", nextPage)
+			}
+			err := scraper.Visit("https://books.toscrape.com/" + nextPage)
+			if err != nil {
+				fmt.Println("Failed to scrap next page: ", "books.toscrape.com/"+nextPage, err)
+			}
+		}
 	})
 
 	scraper.OnError(func(r *colly.Response, err error) {

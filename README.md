@@ -7,6 +7,7 @@ This project implements a web scraper using the **Colly** framework in Go. The s
 
 -   **Data Extraction**: Uses the Colly framework to scrape relevant data from web pages.
 -   **Customizable Scraping Logic**: Allows for easy modification of scraping logic based on the website's structure.
+-   **Pagination Support**: Automatically follows and scrapes data across multiple pages by resolving relative URLs.
 -   **Data Storage**: The scraped data is stored in **JSON files** for easy access and further processing.
 
 ### Technologies Used
