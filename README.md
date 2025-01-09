@@ -19,17 +19,9 @@ This project implements a web scraper using the **Colly** framework in Go. The s
 1.  Clone the repository.
 2.  Install the required Go dependencies:
 
-    bash
-
-    Copy code
-
     `go get github.com/gocolly/colly`
 
 3.  Run the scraper:
-
-    bash
-
-    Copy code
 
     `go run main.go`
 
